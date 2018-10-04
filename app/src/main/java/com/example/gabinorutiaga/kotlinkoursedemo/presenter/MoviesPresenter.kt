@@ -2,14 +2,15 @@ package com.example.gabinorutiaga.kotlinkoursedemo.presenter
 
 import android.os.Handler
 import com.example.gabinorutiaga.kotlinkoursedemo.model.Movie
+import com.example.gabinorutiaga.kotlinkoursedemo.model.MoviesResult
 
-class MoviesPresenter(private val callback: MoviesCallback)  {
+class MoviesPresenter(private val callback: MoviesCallback) {
 
-    fun fetchMovies(){
-        callback.onLoadingMovies()
+    fun fetchMovies() {
+        callback.onViewStateChanged(MoviesResult.Loading)
         Handler().postDelayed(
                 {
-                    callback.onSuccessMovies(createDummyMovies())
+                    callback.onViewStateChanged(MoviesResult.Success(createDummyMovies()))
                 },
                 5000 // value in milliseconds
         )
@@ -31,5 +32,4 @@ class MoviesPresenter(private val callback: MoviesCallback)  {
 
         return result
     }
-
 }

@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.example.gabinorutiaga.kotlinkoursedemo.R
-import com.example.gabinorutiaga.kotlinkoursedemo.model.Movie
+import com.example.gabinorutiaga.kotlinkoursedemo.model.MoviesResult
 import com.example.gabinorutiaga.kotlinkoursedemo.presenter.MoviesCallback
 import com.example.gabinorutiaga.kotlinkoursedemo.presenter.MoviesPresenter
 import com.example.gabinorutiaga.kotlinkoursedemo.view.adapter.MoviesAdapter
@@ -33,21 +33,21 @@ class MoviesFragment : Fragment(), MoviesCallback {
         movies_container.adapter = adapter
     }
 
-    override fun onLoadingMovies() {
-        movies_container.visibility = View.GONE
-        loading.visibility = View.VISIBLE
+    override fun onViewStateChanged(moviesResult: MoviesResult) {
+        when (moviesResult) {
+            is MoviesResult.Loading -> {
+                movies_container.visibility = View.GONE
+                loading.visibility = View.VISIBLE
+            }
+            is MoviesResult.Success -> {
+                adapter?.update(moviesResult.movies)
+                movies_container.visibility = View.VISIBLE
+                loading.visibility = View.GONE
+            }
+            is MoviesResult.Error -> {
+                loading.visibility = View.GONE
+                Toast.makeText(context, "Error loading movies", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
-
-    override fun onSuccessMovies(movies: ArrayList<Movie>) {
-        adapter?.update(movies)
-        movies_container.visibility = View.VISIBLE
-        loading.visibility = View.GONE
-    }
-
-    override fun onErrorMovies() {
-        loading.visibility = View.GONE
-        Toast.makeText(context, "Error loading movies", Toast.LENGTH_SHORT).show()
-    }
-
-
 }
