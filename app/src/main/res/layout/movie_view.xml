@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView android:id="@+id/movie_image"
+            android:layout_width="@dimen/thumbnail"
+            android:layout_height="@dimen/thumbnail"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="Title:"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"/>
+
+            <TextView
+                    android:id="@+id/movie_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Desc:"
+                    android:textColor="@android:color/black"
+                    android:textSize="12dp"
+                    android:overScrollMode="ifContentScrolls"/>
+
+            <LinearLayout
+                    android:id="@+id/aditional_info_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <LinearLayout
+                        android:id="@+id/rate_container"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".50"
+                        android:orientation="horizontal">
+
+                    <TextView
+                            android:id="@+id/movie_rate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rate:"
+                            android:layout_weight=".50"/>
+
+                    <TextView
+                            android:id="@+id/movie_stars"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Stars:"
+                            android:layout_weight=".50"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
