@@ -29,7 +29,8 @@ class MoviesFragment : Fragment(), MoviesCallback {
         super.onViewCreated(view, savedInstanceState)
         adapter = MoviesAdapter(ArrayList(), context)
         presenter = MoviesPresenter(this)
-        presenter?.fetchMovies()
+        // presenter?.fetchMovies()
+        presenter?.fetchMovies2()
         movies_container.adapter = adapter
     }
 
@@ -49,5 +50,10 @@ class MoviesFragment : Fragment(), MoviesCallback {
                 Toast.makeText(context, "Error loading movies", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.onDestroy()
     }
 }

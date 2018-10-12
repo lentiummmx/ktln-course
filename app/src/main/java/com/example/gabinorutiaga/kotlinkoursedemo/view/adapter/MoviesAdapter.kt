@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.gabinorutiaga.kotlinkoursedemo.R
-import com.example.gabinorutiaga.kotlinkoursedemo.model.Movie
+import com.example.gabinorutiaga.kotlinkoursedemo.model.movie.Movie
 import com.bumptech.glide.request.RequestOptions
 
 
